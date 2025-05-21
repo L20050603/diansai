@@ -1,8 +1,8 @@
 ./objects/dl_uart.o: ..\..\..\..\..\..\source\ti\driverlib\dl_uart.c \
   ..\..\..\..\..\..\source\ti\driverlib\dl_uart_extend.h \
   ..\..\..\..\..\..\source\ti\driverlib\dl_uart.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  E:\selfInstall\keil5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  E:\selfInstall\keil5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   ..\..\..\..\..\..\source\ti\devices\msp\msp.h \
   ..\..\..\..\..\..\source\ti\devices\DeviceFamily.h \
   ..\..\..\..\..\..\source\ti\devices\msp\m0p\mspm0g350x.h \
@@ -10,8 +10,8 @@
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\cmsis_version.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\cmsis_compiler.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\cmsis_armclang.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_compat.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_acle.h \
+  E:\selfInstall\keil5\ARM\ARMCLANG\Bin\..\include\arm_compat.h \
+  E:\selfInstall\keil5\ARM\ARMCLANG\Bin\..\include\arm_acle.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\mpu_armv7.h \
   ..\..\..\..\..\..\source\ti\devices\msp\peripherals\hw_adc12.h \
   ..\..\..\..\..\..\source\ti\devices\msp\peripherals\hw_aes.h \

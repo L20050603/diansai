@@ -383,6 +383,9 @@
       <Groups>
         <Group>
           <GroupName>Source</GroupName>
+        </Group>
+        <Group>
+          <GroupName>Driverlib</GroupName>
           <Files>
             <File>
               <FileName>empty.c</FileName>
@@ -415,14 +418,19 @@
               <FilePath>..\car_motor_control.c</FilePath>
             </File>
             <File>
+              <FileName>debug.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\debug.c</FilePath>
+            </File>
+            <File>
               <FileName>car_motor_control.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\car_motor_control.h</FilePath>
             </File>
             <File>
-              <FileName>debug.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\debug.c</FilePath>
+              <FileName>delay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\delay.h</FilePath>
             </File>
             <File>
               <FileName>debug.h</FileName>
@@ -435,9 +443,9 @@
               <FilePath>..\delay.c</FilePath>
             </File>
             <File>
-              <FileName>delay.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\delay.h</FilePath>
+              <FileName>line_sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\line_sensor.c</FilePath>
             </File>
             <File>
               <FileName>line_sensor.h</FileName>
@@ -445,19 +453,14 @@
               <FilePath>..\line_sensor.h</FilePath>
             </File>
             <File>
-              <FileName>line_sensor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\line_sensor.c</FilePath>
+              <FileName>test_logs.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\test_logs.h</FilePath>
             </File>
             <File>
               <FileName>test_logs.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\test_logs.c</FilePath>
-            </File>
-            <File>
-              <FileName>test_logs.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\test_logs.h</FilePath>
             </File>
             <File>
               <FileName>encoder.c</FileName>
@@ -469,11 +472,6 @@
               <FileType>5</FileType>
               <FilePath>..\encoder.h</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Driverlib</GroupName>
-          <Files>
             <File>
               <FileName>dl_timer.c</FileName>
               <FileType>1</FileType>

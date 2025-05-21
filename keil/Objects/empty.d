@@ -2,14 +2,14 @@
   ..\..\..\..\..\..\source\ti\devices\msp\msp.h \
   ..\..\..\..\..\..\source\ti\devices\DeviceFamily.h \
   ..\..\..\..\..\..\source\ti\devices\msp\m0p\mspm0g350x.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  E:\selfInstall\keil5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  E:\selfInstall\keil5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\core_cm0plus.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\cmsis_version.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\cmsis_compiler.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\cmsis_armclang.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_compat.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_acle.h \
+  E:\selfInstall\keil5\ARM\ARMCLANG\Bin\..\include\arm_compat.h \
+  E:\selfInstall\keil5\ARM\ARMCLANG\Bin\..\include\arm_acle.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\mpu_armv7.h \
   ..\..\..\..\..\..\source\ti\devices\msp\peripherals\hw_adc12.h \
   ..\..\..\..\..\..\source\ti\devices\msp\peripherals\hw_aes.h \
@@ -41,7 +41,7 @@
   ..\..\..\..\..\..\source\ti\driverlib\dl_adc12.h \
   ..\..\..\..\..\..\source\ti\driverlib\dl_common.h \
   ..\..\..\..\..\..\source\ti\driverlib\dl_aes.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  E:\selfInstall\keil5\ARM\ARMCLANG\Bin\..\include\stddef.h \
   ..\..\..\..\..\..\source\ti\driverlib\dl_comp.h \
   ..\..\..\..\..\..\source\ti\driverlib\dl_crc.h \
   ..\..\..\..\..\..\source\ti\driverlib\dl_dac12.h \
@@ -71,6 +71,6 @@
   ..\..\..\..\..\..\source\ti\driverlib\m0p\dl_interrupt.h \
   ..\..\..\..\..\..\source\ti\driverlib\m0p\dl_systick.h \
   ..\car_motor_control.h ..\debug.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\delay.h \
+  E:\selfInstall\keil5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
+  E:\selfInstall\keil5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\delay.h \
   ..\line_sensor.h ..\test_logs.h ..\encoder.h
