@@ -53,4 +53,10 @@ void Delay_us(uint32_t us)
         // 空循环
         __NOP(); // 无操作指令，防止编译器优化
     }
+}
+
+// 获取当前系统时钟计数（毫秒）
+uint32_t Delay_getTicks(void)
+{
+    return g_systickCount;
 } 

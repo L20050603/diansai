@@ -11,6 +11,8 @@
  */
 const GPIO          = scripting.addModule("/ti/driverlib/GPIO", {}, false);
 const GPIO1         = GPIO.addInstance();
+const GPIO2         = GPIO.addInstance();
+const GPIO3         = GPIO.addInstance();
 const PWM           = scripting.addModule("/ti/driverlib/PWM", {}, false);
 const PWM1          = PWM.addInstance();
 const PWM2          = PWM.addInstance();
@@ -52,6 +54,28 @@ const Board                       = scripting.addModule("/ti/driverlib/Board", {
 Board.peripheral.$assign          = "DEBUGSS";
 Board.peripheral.swclkPin.$assign = "PA20";
 Board.peripheral.swdioPin.$assign = "PA19";
+
+GPIO2.$name                               = "encoder";
+GPIO2.port                                = "PORTB";
+GPIO2.associatedPins.create(2);
+GPIO2.associatedPins[0].$name             = "left_b";
+GPIO2.associatedPins[0].direction         = "INPUT";
+GPIO2.associatedPins[0].assignedPin       = "8";
+GPIO2.associatedPins[0].interruptEn       = true;
+GPIO2.associatedPins[0].polarity          = "RISE";
+GPIO2.associatedPins[0].interruptPriority = "1";
+GPIO2.associatedPins[1].$name             = "right_a";
+GPIO2.associatedPins[1].direction         = "INPUT";
+GPIO2.associatedPins[1].assignedPin       = "9";
+GPIO2.associatedPins[1].interruptEn       = true;
+GPIO2.associatedPins[1].polarity          = "RISE";
+GPIO2.associatedPins[1].interruptPriority = "1";
+
+GPIO3.$name                          = "sys";
+GPIO3.port                           = "PORTA";
+GPIO3.associatedPins[0].$name        = "A14";
+GPIO3.associatedPins[0].assignedPin  = "14";
+GPIO3.associatedPins[0].initialValue = "SET";
 
 PWM1.clockDivider                       = 8;
 PWM1.clockPrescale                      = 40;
@@ -141,6 +165,9 @@ GPIO1.associatedPins[0].pin.$suggestSolution = "PB18";
 GPIO1.associatedPins[1].pin.$suggestSolution = "PB19";
 GPIO1.associatedPins[2].pin.$suggestSolution = "PB20";
 GPIO1.associatedPins[3].pin.$suggestSolution = "PB24";
+GPIO2.associatedPins[0].pin.$suggestSolution = "PB8";
+GPIO2.associatedPins[1].pin.$suggestSolution = "PB9";
+GPIO3.associatedPins[0].pin.$suggestSolution = "PA14";
 PWM3.peripheral.ccp0Pin.$suggestSolution     = "PA21";
 SYSCTL.peripheral.$suggestSolution           = "SYSCTL";
 UART1.peripheral.$suggestSolution            = "UART0";

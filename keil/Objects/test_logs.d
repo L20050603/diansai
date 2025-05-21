@@ -73,4 +73,4 @@
   ..\car_motor_control.h ..\debug.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\delay.h \
-  ..\line_sensor.h
+  ..\line_sensor.h ..\encoder.h

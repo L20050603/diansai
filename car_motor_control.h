@@ -33,7 +33,7 @@ void Motor_init(void);
  * @param leftSpeed  左轮速度 (0-100)
  * @param rightSpeed 右轮速度 (0-100)
  */
-void Motor_setSpeed(uint8_t leftSpeed, uint8_t rightSpeed);
+void Motor_setSpeed(int16_t leftSpeed, int16_t rightSpeed);
 
 /**
  * 小车前进

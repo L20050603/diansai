@@ -146,6 +146,12 @@ extern "C" {
 
 
 
+/* Port definition for Pin Group sys */
+#define sys_PORT                                                         (GPIOA)
+
+/* Defines for A14: GPIOA.14 with pinCMx 36 on package pin 29 */
+#define sys_A14_PIN                                             (DL_GPIO_PIN_14)
+#define sys_A14_IOMUX                                            (IOMUX_PINCM36)
 /* Port definition for Pin Group Line_sensor */
 #define Line_sensor_PORT                                                 (GPIOB)
 
@@ -161,6 +167,20 @@ extern "C" {
 /* Defines for L_3: GPIOB.24 with pinCMx 52 on package pin 42 */
 #define Line_sensor_L_3_PIN                                     (DL_GPIO_PIN_24)
 #define Line_sensor_L_3_IOMUX                                    (IOMUX_PINCM52)
+/* Port definition for Pin Group encoder */
+#define encoder_PORT                                                     (GPIOB)
+
+/* Defines for left_b: GPIOB.8 with pinCMx 25 on package pin 22 */
+// pins affected by this interrupt request:["left_b","right_a"]
+#define encoder_INT_IRQN                                        (GPIOB_INT_IRQn)
+#define encoder_INT_IIDX                        (DL_INTERRUPT_GROUP1_IIDX_GPIOB)
+#define encoder_left_b_IIDX                                  (DL_GPIO_IIDX_DIO8)
+#define encoder_left_b_PIN                                       (DL_GPIO_PIN_8)
+#define encoder_left_b_IOMUX                                     (IOMUX_PINCM25)
+/* Defines for right_a: GPIOB.9 with pinCMx 26 on package pin 23 */
+#define encoder_right_a_IIDX                                 (DL_GPIO_IIDX_DIO9)
+#define encoder_right_a_PIN                                      (DL_GPIO_PIN_9)
+#define encoder_right_a_IOMUX                                    (IOMUX_PINCM26)
 
 
 

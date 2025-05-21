@@ -133,6 +133,8 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
     DL_GPIO_initPeripheralInputFunction(
         GPIO_UART_1_IOMUX_RX, GPIO_UART_1_IOMUX_RX_FUNC);
 
+    DL_GPIO_initDigitalOutput(sys_A14_IOMUX);
+
     DL_GPIO_initDigitalInputFeatures(Line_sensor_L_0_IOMUX,
 		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_PULL_DOWN,
 		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
@@ -149,6 +151,18 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_PULL_DOWN,
 		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
 
+    DL_GPIO_initDigitalInput(encoder_left_b_IOMUX);
+
+    DL_GPIO_initDigitalInput(encoder_right_a_IOMUX);
+
+    DL_GPIO_setPins(sys_PORT, sys_A14_PIN);
+    DL_GPIO_enableOutput(sys_PORT, sys_A14_PIN);
+    DL_GPIO_setLowerPinsPolarity(GPIOB, DL_GPIO_PIN_8_EDGE_RISE |
+		DL_GPIO_PIN_9_EDGE_RISE);
+    DL_GPIO_clearInterruptStatus(GPIOB, encoder_left_b_PIN |
+		encoder_right_a_PIN);
+    DL_GPIO_enableInterrupt(GPIOB, encoder_left_b_PIN |
+		encoder_right_a_PIN);
 
 }
 
@@ -165,6 +179,8 @@ SYSCONFIG_WEAK void SYSCFG_DL_SYSCTL_init(void)
     DL_SYSCTL_disableSYSPLL();
     DL_SYSCTL_setULPCLKDivider(DL_SYSCTL_ULPCLK_DIV_1);
     DL_SYSCTL_setMCLKDivider(DL_SYSCTL_MCLK_DIVIDER_DISABLE);
+    /* INT_GROUP1 Priority */
+    NVIC_SetPriority(GPIOB_INT_IRQn, 1);
 
 }
 

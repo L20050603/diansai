@@ -1,9 +1,9 @@
-./objects/empty.o: ..\empty.c ..\ti_msp_dl_config.h \
+./objects/encoder.o: ..\encoder.c ..\encoder.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h ..\ti_msp_dl_config.h \
   ..\..\..\..\..\..\source\ti\devices\msp\msp.h \
   ..\..\..\..\..\..\source\ti\devices\DeviceFamily.h \
   ..\..\..\..\..\..\source\ti\devices\msp\m0p\mspm0g350x.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\core_cm0plus.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\cmsis_version.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\cmsis_compiler.h \
@@ -69,8 +69,5 @@
   ..\..\..\..\..\..\source\ti\driverlib\dl_vref.h \
   ..\..\..\..\..\..\source\ti\driverlib\dl_wwdt.h \
   ..\..\..\..\..\..\source\ti\driverlib\m0p\dl_interrupt.h \
-  ..\..\..\..\..\..\source\ti\driverlib\m0p\dl_systick.h \
-  ..\car_motor_control.h ..\debug.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\delay.h \
-  ..\line_sensor.h ..\test_logs.h ..\encoder.h
+  ..\..\..\..\..\..\source\ti\driverlib\m0p\dl_systick.h ..\delay.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h

@@ -57,44 +57,51 @@ void Motor_init(void)
 }
 
 /**
- * 设置电机速度
+ * 设置左右电机速度和方向
  * 
- * @param leftSpeed  左轮速度 (0-100)
- * @param rightSpeed 右轮速度 (0-100)
+ * @param leftSpeed  左轮速度 (-100 到 100)，正值前进，负值后退
+ * @param rightSpeed 右轮速度 (-100 到 100)，正值前进，负值后退
  */
-void Motor_setSpeed(uint8_t leftSpeed, uint8_t rightSpeed)
+void Motor_setSpeed(int16_t leftSpeed, int16_t rightSpeed)
 {
-    // 确保速度在有效范围内
-    if (leftSpeed > 100)
-        leftSpeed = 100;
+    // 记录方向
+    bool leftForward = (leftSpeed >= 0);
+    bool rightForward = (rightSpeed >= 0);
     
-    if (rightSpeed > 100)
-        rightSpeed = 100;
+    // 取速度绝对值
+    uint8_t leftSpeedAbs = (leftSpeed < 0) ? -leftSpeed : leftSpeed;
+    uint8_t rightSpeedAbs = (rightSpeed < 0) ? -rightSpeed : rightSpeed;
+    
+    // 限制速度在有效范围内
+    if (leftSpeedAbs > 100)
+        leftSpeedAbs = 100;
+    
+    if (rightSpeedAbs > 100)
+        rightSpeedAbs = 100;
     
     // 计算PWM占空比值
-    uint16_t leftDuty = (uint16_t)((uint32_t)leftSpeed * PWM_PERIOD / 100);
-    uint16_t rightDuty = (uint16_t)((uint32_t)rightSpeed * PWM_PERIOD / 100);
+    uint16_t leftDuty = (uint16_t)((uint32_t)leftSpeedAbs * PWM_PERIOD / 100);
+    uint16_t rightDuty = (uint16_t)((uint32_t)rightSpeedAbs * PWM_PERIOD / 100);
     
-    // 获取当前电机方向状态
-    uint16_t rightIN1 = getPWMDuty(RIGHT_IN1_TIMER, RIGHT_IN1_CHANNEL, TIMER_TYPE_A);
-    uint16_t rightIN2 = getPWMDuty(RIGHT_IN2_TIMER, RIGHT_IN2_CHANNEL, TIMER_TYPE_A);
-    uint16_t leftIN1 = getPWMDuty(LEFT_IN1_TIMER, LEFT_IN1_CHANNEL, TIMER_TYPE_G);
-    uint16_t leftIN2 = getPWMDuty(LEFT_IN2_TIMER, LEFT_IN2_CHANNEL, TIMER_TYPE_G);
-    
-    // 更新PWM占空比，保持电机方向不变
-    if (rightIN1 > 0 && rightIN2 == 0) {
-        // 右轮向前
+    // 对于右轮
+    if (rightForward) {
+        // 右轮前进: IN1=PWM, IN2=0
         setPWMDuty(RIGHT_IN1_TIMER, RIGHT_IN1_CHANNEL, rightDuty, TIMER_TYPE_A);
-    } else if (rightIN1 == 0 && rightIN2 > 0) {
-        // 右轮向后
+        setPWMDuty(RIGHT_IN2_TIMER, RIGHT_IN2_CHANNEL, 0, TIMER_TYPE_A);
+    } else {
+        // 右轮后退: IN1=0, IN2=PWM
+        setPWMDuty(RIGHT_IN1_TIMER, RIGHT_IN1_CHANNEL, 0, TIMER_TYPE_A);
         setPWMDuty(RIGHT_IN2_TIMER, RIGHT_IN2_CHANNEL, rightDuty, TIMER_TYPE_A);
     }
     
-    if (leftIN1 > 0 && leftIN2 == 0) {
-        // 左轮向前
+    // 对于左轮
+    if (leftForward) {
+        // 左轮前进: IN1=PWM, IN2=0
         setPWMDuty(LEFT_IN1_TIMER, LEFT_IN1_CHANNEL, leftDuty, TIMER_TYPE_G);
-    } else if (leftIN1 == 0 && leftIN2 > 0) {
-        // 左轮向后
+        setPWMDuty(LEFT_IN2_TIMER, LEFT_IN2_CHANNEL, 0, TIMER_TYPE_G);
+    } else {
+        // 左轮后退: IN1=0, IN2=PWM
+        setPWMDuty(LEFT_IN1_TIMER, LEFT_IN1_CHANNEL, 0, TIMER_TYPE_G);
         setPWMDuty(LEFT_IN2_TIMER, LEFT_IN2_CHANNEL, leftDuty, TIMER_TYPE_G);
     }
 }

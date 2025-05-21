@@ -1,4 +1,4 @@
-./objects/empty.o: ..\empty.c ..\ti_msp_dl_config.h \
+./objects/board.o: ..\board.c ..\board.h ..\ti_msp_dl_config.h \
   ..\..\..\..\..\..\source\ti\devices\msp\msp.h \
   ..\..\..\..\..\..\source\ti\devices\DeviceFamily.h \
   ..\..\..\..\..\..\source\ti\devices\msp\m0p\mspm0g350x.h \
@@ -70,7 +70,4 @@
   ..\..\..\..\..\..\source\ti\driverlib\dl_wwdt.h \
   ..\..\..\..\..\..\source\ti\driverlib\m0p\dl_interrupt.h \
   ..\..\..\..\..\..\source\ti\driverlib\m0p\dl_systick.h \
-  ..\car_motor_control.h ..\debug.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\delay.h \
-  ..\line_sensor.h ..\test_logs.h ..\encoder.h
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h

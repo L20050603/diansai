@@ -7,6 +7,7 @@
 ".\objects\delay.o"
 ".\objects\line_sensor.o"
 ".\objects\test_logs.o"
+".\objects\encoder.o"
 ".\objects\dl_timer.o"
 ".\objects\dl_common.o"
 ".\objects\dl_uart.o"

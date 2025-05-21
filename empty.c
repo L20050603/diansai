@@ -37,9 +37,11 @@
 #include "delay.h"
 #include "line_sensor.h"
 #include "test_logs.h"
+#include "encoder.h"
 
 #define printf DEBUG_printf
-
+#define left_deadzone 3
+#define right_deadzone 3
 
 int main(void)
 {
@@ -56,20 +58,36 @@ int main(void)
     // 初始化巡线传感器
     LineSensor_init();
     
+    // 初始化编码器模块
+    Encoder_init();
+    NVIC_DisableIRQ(encoder_INT_IRQN);//禁用编码器中断
+	
+    printf("Smart Car System Starting\r\n");
+    
+    // Wait for system to stabilize
+    Delay_ms(1000);
     
     while (1) {
-        int leftSpeed = 1000;
-        int rightSpeed = 1000;
-        float batteryVoltage = 12.0;
+	      //Motor_forward(20);
+        Motor_setSpeed(left_deadzone+90, right_deadzone+90);//最大90
         
-        // 读取所有传感器状态 (0表示检测到黑线，1表示未检测到黑线)
-        LineSensor_State_t sensorState = LineSensor_readAll();
-        // 使用延时函数
-        //Delay_ms(100); // 延时0.1秒
-        test_motor_control();
-        Delay_ms(5000); 
-        }
-    
+        // Read all sensor states (0 means black line detected)
+        //LineSensor_State_t sensorState = LineSensor_readAll();
+        // int32_t leftPulses = Encoder_getPulseCount(ENCODER_LEFT);
+        // int32_t rightPulses = Encoder_getPulseCount(ENCODER_RIGHT);
+        
+        // Run encoder test program (for 10 seconds)
+        //printf("Starting encoder test\r\n");
+        //test_encoder(10000);
+        
+        // Print sensor status
+        //logs(sensorState);
+        
+        // Test interval
+        // printf("Encoder Pulses: Left=%ld, Right=%ld\r\n", leftPulses, rightPulses);
+        // printf("Waiting\r\n");
+        Delay_ms(5000);
     }
+}
 
 

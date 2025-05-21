@@ -1,11 +1,11 @@
 ./objects/debug.o: ..\debug.c ..\debug.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h ..\ti_msp_dl_config.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h ..\ti_msp_dl_config.h \
   ..\..\..\..\..\..\source\ti\devices\msp\msp.h \
   ..\..\..\..\..\..\source\ti\devices\DeviceFamily.h \
   ..\..\..\..\..\..\source\ti\devices\msp\m0p\mspm0g350x.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\core_cm0plus.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\cmsis_version.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\cmsis_compiler.h \

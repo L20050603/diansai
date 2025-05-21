@@ -27,4 +27,7 @@ void Delay_ms(uint32_t ms);
 // 微秒延时函数（使用循环实现，精度较低）
 void Delay_us(uint32_t us);
 
+// 获取系统时钟计数（毫秒）
+uint32_t Delay_getTicks(void);
+
 #endif /* DELAY_H_ */ 

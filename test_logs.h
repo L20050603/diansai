@@ -14,6 +14,7 @@
 #include "debug.h"
 #include "delay.h"
 #include "line_sensor.h"
+#include "encoder.h"
 
 /**
  * @brief 电机控制测试程序
@@ -39,5 +40,19 @@ void test_motor_control(void);
  * @param sensorState 传感器状态结构体
  */
 void logs(LineSensor_State_t sensorState);
+
+/**
+ * @brief 编码器测试程序
+ * 
+ * 测试编码器功能，包括：
+ * - 脉冲计数
+ * - 速度测量
+ * - 方向检测
+ * - RPM计算
+ * - 距离测量
+ * 
+ * @param testDuration 测试持续时间（毫秒）
+ */
+void test_encoder(uint32_t testDuration);
 
 #endif /* TEST_LOGS_H_ */
