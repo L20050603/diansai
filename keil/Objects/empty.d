@@ -1,4 +1,5 @@
-./objects/empty.o: ..\empty.c ..\ti_msp_dl_config.h \
+./objects/empty.o: ..\empty.c ..\..\MSPM0_Car_Project\board.h \
+  ..\..\MSPM0_Car_Project\ti_msp_dl_config.h \
   ..\..\..\..\..\..\source\ti\devices\msp\msp.h \
   ..\..\..\..\..\..\source\ti\devices\DeviceFamily.h \
   ..\..\..\..\..\..\source\ti\devices\msp\m0p\mspm0g350x.h \
@@ -70,7 +71,11 @@
   ..\..\..\..\..\..\source\ti\driverlib\dl_wwdt.h \
   ..\..\..\..\..\..\source\ti\driverlib\m0p\dl_interrupt.h \
   ..\..\..\..\..\..\source\ti\driverlib\m0p\dl_systick.h \
-  ..\car_motor_control.h ..\debug.h \
+  ..\..\MSPM0_Car_Project\debug.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\delay.h \
-  ..\line_sensor.h ..\test_logs.h ..\encoder.h
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  ..\..\MSPM0_Car_Project\delay.h \
+  ..\..\MSPM0_Car_Project\car_motor_control.h \
+  ..\..\MSPM0_Car_Project\line_sensor.h \
+  ..\..\MSPM0_Car_Project\test_logs.h ..\..\MSPM0_Car_Project\encoder.h \
+  ..\BSP\bsp_mpu6050.h ..\BSP\eMPL\inv_mpu.h

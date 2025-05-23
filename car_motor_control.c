@@ -8,6 +8,11 @@
  */
 
 #include "car_motor_control.h"
+#include "inv_mpu.h"
+
+// 电机死区定义，低于此值电机不会转动
+#define left_deadzone 3
+#define right_deadzone 3
 
 // 根据syscfg配置的PWM信号定义
 // PWM_bin1 (PWM1) -> 右轮 IN1 (TIMA1 CCP0 - PA17)*
@@ -284,18 +289,76 @@ void Motor_stop(void)
 }
 
 /**
- * 小车刹车 (电气制动)
+ * 小车刹车
+ * 
+ * 使用电气制动快速停止
  */
 void Motor_brake(void)
 {
-    // DRV8833真值表: xIN1=1, xIN2=1 -> Brake / slow decay
-    // 右轮制动
+    // DRV8833真值表: xIN1=1, xIN2=1 -> Brake (short circuit)
+    // 右轮刹车
     setPWMDuty(RIGHT_IN1_TIMER, RIGHT_IN1_CHANNEL, PWM_PERIOD, TIMER_TYPE_A);
     setPWMDuty(RIGHT_IN2_TIMER, RIGHT_IN2_CHANNEL, PWM_PERIOD, TIMER_TYPE_A);
     
-    // 左轮制动
+    // 左轮刹车
     setPWMDuty(LEFT_IN1_TIMER, LEFT_IN1_CHANNEL, PWM_PERIOD, TIMER_TYPE_G);
     setPWMDuty(LEFT_IN2_TIMER, LEFT_IN2_CHANNEL, PWM_PERIOD, TIMER_TYPE_G);
+}
+
+/**
+ * 小车直线行走闭环控制
+ * 
+ * 使用IMU数据进行闭环控制，使小车保持直线行走
+ * 
+ * @param speed 基础速度百分比 (0-100)
+ * @param kp 比例系数，控制修正的强度
+ */
+void Motor_straightLine(uint8_t speed, float kp)
+{
+    // 声明变量
+    float pitch, roll, yaw;         // 欧拉角
+    static float initial_yaw = 0;   // 初始偏航角
+    static bool is_initialized = false;  // 初始化标志
+    float yaw_error;                // 偏航角误差
+    int16_t left_speed, right_speed;  // 左右轮速度
+    int16_t speed_correction;       // 速度修正值
+    
+    // 获取当前姿态角数据
+    if (mpu_dmp_get_data(&pitch, &roll, &yaw) != 0) {
+        // 如果读取失败，使用最近的有效数据
+        return;
+    }
+    
+    // 首次运行时保存初始偏航角作为参考
+    if (!is_initialized) {
+        initial_yaw = yaw;
+        is_initialized = true;
+    }
+    
+    // 计算偏航角误差（当前偏航角与初始偏航角之差）
+    yaw_error = yaw - initial_yaw;
+    
+    // 角度归一化到 -180 到 180 范围内
+    while (yaw_error > 180) yaw_error -= 360;
+    while (yaw_error < -180) yaw_error += 360;
+    
+    // 使用比例控制计算速度修正值
+    // 当偏航角为正（向右偏）时，左轮速度减小，右轮速度增加
+    // 当偏航角为负（向左偏）时，左轮速度增加，右轮速度减小
+    speed_correction = (int16_t)(kp * yaw_error);
+    
+    // 计算左右轮的速度
+    left_speed = speed - speed_correction;
+    right_speed = speed + speed_correction;
+    
+    // 限制速度在有效范围内
+    if (left_speed < left_deadzone) left_speed = left_deadzone;
+    if (right_speed < right_deadzone) right_speed = right_deadzone;
+    if (left_speed > 100) left_speed = 100;
+    if (right_speed > 100) right_speed = 100;
+    
+    // 应用电机速度
+    Motor_setSpeed(left_speed, right_speed);
 }
 
 /**

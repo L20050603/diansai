@@ -1,7 +1,8 @@
 ./objects/car_motor_control.o: ..\car_motor_control.c \
-  ..\car_motor_control.h \
+  ..\..\MSPM0_Car_Project\car_motor_control.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h ..\ti_msp_dl_config.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  ..\..\MSPM0_Car_Project\ti_msp_dl_config.h \
   ..\..\..\..\..\..\source\ti\devices\msp\msp.h \
   ..\..\..\..\..\..\source\ti\devices\DeviceFamily.h \
   ..\..\..\..\..\..\source\ti\devices\msp\m0p\mspm0g350x.h \

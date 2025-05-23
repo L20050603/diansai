@@ -30,18 +30,22 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
-#include "ti_msp_dl_config.h"
+#include "board.h"
 #include "car_motor_control.h"
-#include "debug.h"
-#include "delay.h"
 #include "line_sensor.h"
 #include "test_logs.h"
 #include "encoder.h"
+#include "bsp_mpu6050.h"
+#include "inv_mpu.h"
 
+
+#ifndef printf
 #define printf DEBUG_printf
+#endif
 #define left_deadzone 3
 #define right_deadzone 3
+
+
 
 int main(void)
 {
@@ -52,24 +56,33 @@ int main(void)
     // 初始化延时函数
     Delay_init();
     
-    // 初始化电机控制模块
-    Motor_init();
+    // // 初始化电机控制模块
+    // Motor_init();
     
-    // 初始化巡线传感器
-    LineSensor_init();
+    // // 初始化巡线传感器
+    // LineSensor_init();
     
-    // 初始化编码器模块
-    Encoder_init();
-    NVIC_DisableIRQ(encoder_INT_IRQN);//禁用编码器中断
+    // // 初始化编码器模块
+    // Encoder_init();
+    //NVIC_DisableIRQ(encoder_INT_IRQN);//禁用编码器中断
+	  
 	
+	  MPU6050_Init();
+    
+	  
     printf("Smart Car System Starting\r\n");
     
     // Wait for system to stabilize
     Delay_ms(1000);
-    
+		
+    mpu_6050_test();
     while (1) {
+			//IIC_Start();
+      printf("IIC_Start\r\n");
+			//test_mpu6050_signal_wave();
+			
 	      //Motor_forward(20);
-        Motor_setSpeed(left_deadzone+90, right_deadzone+90);//最大90
+        //Motor_setSpeed(left_deadzone+90, right_deadzone+90);//最大90
         
         // Read all sensor states (0 means black line detected)
         //LineSensor_State_t sensorState = LineSensor_readAll();
@@ -85,8 +98,8 @@ int main(void)
         
         // Test interval
         // printf("Encoder Pulses: Left=%ld, Right=%ld\r\n", leftPulses, rightPulses);
-        // printf("Waiting\r\n");
-        Delay_ms(5000);
+        //printf("Waiting\r\n");
+        Delay_ms(3000);
     }
 }
 

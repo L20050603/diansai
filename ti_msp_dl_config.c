@@ -155,8 +155,16 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 
     DL_GPIO_initDigitalInput(encoder_right_a_IOMUX);
 
-    DL_GPIO_setPins(sys_PORT, sys_A14_PIN);
-    DL_GPIO_enableOutput(sys_PORT, sys_A14_PIN);
+    DL_GPIO_initDigitalOutput(I2C_SDA_IOMUX);
+
+    DL_GPIO_initDigitalOutput(I2C_SCL_IOMUX);
+
+    DL_GPIO_setPins(GPIOA, sys_A14_PIN |
+		I2C_SDA_PIN |
+		I2C_SCL_PIN);
+    DL_GPIO_enableOutput(GPIOA, sys_A14_PIN |
+		I2C_SDA_PIN |
+		I2C_SCL_PIN);
     DL_GPIO_setLowerPinsPolarity(GPIOB, DL_GPIO_PIN_8_EDGE_RISE |
 		DL_GPIO_PIN_9_EDGE_RISE);
     DL_GPIO_clearInterruptStatus(GPIOB, encoder_left_b_PIN |

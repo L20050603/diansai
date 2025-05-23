@@ -1,4 +1,5 @@
-./objects/ti_msp_dl_config.o: ..\ti_msp_dl_config.c ..\ti_msp_dl_config.h \
+./objects/ti_msp_dl_config.o: ..\ti_msp_dl_config.c \
+  ..\..\MSPM0_Car_Project\ti_msp_dl_config.h \
   ..\..\..\..\..\..\source\ti\devices\msp\msp.h \
   ..\..\..\..\..\..\source\ti\devices\DeviceFamily.h \
   ..\..\..\..\..\..\source\ti\devices\msp\m0p\mspm0g350x.h \

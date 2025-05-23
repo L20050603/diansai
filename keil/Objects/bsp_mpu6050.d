@@ -1,10 +1,11 @@
-./objects/encoder.o: ..\encoder.c ..\..\MSPM0_Car_Project\encoder.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+./objects/bsp_mpu6050.o: ..\BSP\bsp_mpu6050.c ..\BSP\bsp_mpu6050.h \
+  ..\..\MSPM0_Car_Project\board.h \
   ..\..\MSPM0_Car_Project\ti_msp_dl_config.h \
   ..\..\..\..\..\..\source\ti\devices\msp\msp.h \
   ..\..\..\..\..\..\source\ti\devices\DeviceFamily.h \
   ..\..\..\..\..\..\source\ti\devices\msp\m0p\mspm0g350x.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\core_cm0plus.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\cmsis_version.h \
   ..\..\..\..\..\..\source\third_party\CMSIS\Core\Include\cmsis_compiler.h \
@@ -71,5 +72,7 @@
   ..\..\..\..\..\..\source\ti\driverlib\dl_wwdt.h \
   ..\..\..\..\..\..\source\ti\driverlib\m0p\dl_interrupt.h \
   ..\..\..\..\..\..\source\ti\driverlib\m0p\dl_systick.h \
-  ..\..\MSPM0_Car_Project\delay.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h
+  ..\..\MSPM0_Car_Project\debug.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  ..\..\MSPM0_Car_Project\delay.h

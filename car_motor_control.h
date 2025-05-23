@@ -93,4 +93,14 @@ void Motor_stop(void);
  */
 void Motor_brake(void);
 
+/**
+ * 小车直线行走闭环控制
+ * 
+ * 使用IMU数据进行闭环控制，使小车保持直线行走
+ * 
+ * @param speed 基础速度百分比 (0-100)
+ * @param kp 比例系数，控制修正的强度
+ */
+void Motor_straightLine(uint8_t speed, float kp);
+
 #endif /* CAR_MOTOR_CONTROL_H_ */ 
